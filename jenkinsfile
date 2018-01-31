@@ -3,25 +3,25 @@ pipeline {
           node {
             label 'dockernode'
         }
-      } 
+       } 
        stages {
          stage('killing any container if running') {
            steps {
              echo 'kill docker conatainer if exists'
              sh 'docker rm -f dockerdemo'
-         }
-       } 
+          }
+        } 
          stage('deleting the docker image if existing') {
            steps {
              echo 'delete the image if exists'
              sh 'docker rmi -f webimage:v1'
-       }    
-      }
+         }    
+        }
          stage('build docker image') {
            steps {
            sh 'docker build -t webimage:v1 .'
-      }   
-     }
+         }   
+       }
          stage('running docker container') {
            steps {
            sh 'docker run -it -d --name dockerdemo -p 8081:80 webimage:v1'
