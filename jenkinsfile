@@ -27,5 +27,6 @@ pipeline {
            sh "docker run -it -d --name dockerdemo -p 8081:80 webimage:v1"
         }
       } 
+    }  
  } 
     
